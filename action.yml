@@ -4,22 +4,10 @@ branding:
   icon: "send"
   color: "blue"
 inputs:
-  repository:
-    description: "Repository name with owner."
-    default: ${{ github.repository }}
-    required: false
-  prnumber:
-    description: "Pull request number."
-    default: ${{ github.event.pull_request.number }}
-    required: false
-  token:
-    description: >
-      Personal access token (PAT) used to fetch information from the repository. 
-      The PAT is configured with the local git config, which enables your scripts 
-      to run authenticated git commands. The post-job step removes the PAT.
-      We recommend using a service account with the least permissions necessary.
-    default: ${{ github.token }}
+  event:
+    description: "GitHub action event"
+    default: ${{ toJSON(github) }}
     required: false
 runs:
   using: "docker"
-  image: "docker://reviewpad/action:v2.x"
+  image: "docker://reviewpad/action:0fc4bbb80603420e2ac4e22f4d8621ed5cd25c39"
