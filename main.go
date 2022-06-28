@@ -147,7 +147,7 @@ func main() {
 	}
 
 	if err != nil {
-		if engine.ReviewpadFile.IgnoreErrors {
+		if file.IgnoreErrors {
 			log.Print(err.Error())
 		} else {
 			log.Fatal(err.Error())
