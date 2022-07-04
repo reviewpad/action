@@ -121,7 +121,10 @@ func main() {
 	}
 
 	buf := new(bytes.Buffer)
-	buf.ReadFrom(ioReader)
+	_, err = buf.ReadFrom(ioReader)
+	if err != nil {
+		log.Fatalln(err)
+	}
 
 	file, err := reviewpad.Load(buf)
 	if err != nil {
