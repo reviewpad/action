@@ -150,9 +150,8 @@ func main() {
 	if err != nil {
 		if file.IgnoreErrors {
 			log.Print(err.Error())
-		} else {
-			log.Fatal(err.Error())
+			return
 		}
-		return
+		log.Fatal(err.Error())
 	}
 }
