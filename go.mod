@@ -5,8 +5,8 @@ go 1.18
 require (
 	github.com/explore-dev/atlas-common/go v0.0.0-20220509090605-a2bc1701df68
 	github.com/google/go-github/v42 v42.0.0
-	github.com/reviewpad/reviewpad-premium/v2 v2.1.1-0.20220628142153-1782943d7b56
-	github.com/reviewpad/reviewpad/v2 v2.1.1-0.20220628095602-562d74477951
+	github.com/reviewpad/reviewpad-premium/v2 v2.1.1-0.20220704155546-bcac9f08a7a6
+	github.com/reviewpad/reviewpad/v2 v2.1.1-0.20220704141608-2ac4461ff9e8
 	github.com/shurcooL/githubv4 v0.0.0-20220520033151-0b4e3294ff00
 	golang.org/x/oauth2 v0.0.0-20220608161450-d0670ef3b1eb
 	google.golang.org/grpc v1.40.0
@@ -16,12 +16,9 @@ require (
 	github.com/bmatcuk/doublestar/v4 v4.0.2 // indirect
 	github.com/dukex/mixpanel v0.0.0-20220410140740-e82251311162 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
-	github.com/google/go-github/v41 v41.0.0 // indirect
 	github.com/google/go-querystring v1.1.0 // indirect
 	github.com/google/uuid v1.3.0 // indirect
-	github.com/gorilla/mux v1.8.0 // indirect
 	github.com/kr/pretty v0.2.0 // indirect
-	github.com/migueleliasweb/go-github-mock v0.0.8 // indirect
 	github.com/shurcooL/graphql v0.0.0-20220606043923-3cf50f8a0a29 // indirect
 	github.com/tomnomnom/linkheader v0.0.0-20180905144013-02ca5825eb80 // indirect
 	golang.org/x/crypto v0.0.0-20210817164053-32db794688a5 // indirect
