@@ -82,8 +82,7 @@ func getEnv() (*Env, error) {
 func main() {
 	env, err := getEnv()
 	if err != nil {
-		log.Print(err)
-		return
+		log.Fatalln(err.Error())
 	}
 
 	ctx := context.Background()
@@ -97,8 +96,7 @@ func main() {
 
 	ghPullRequest, _, err := client.PullRequests.Get(ctx, env.RepoOwner, env.RepoName, env.PRNumber)
 	if err != nil {
-		log.Print(err)
-		return
+		log.Fatalln(err.Error())
 	}
 
 	if ghPullRequest.Merged != nil && *ghPullRequest.Merged {
@@ -106,45 +104,62 @@ func main() {
 		return
 	}
 
-	// TODO: Extend logic to choose between base or head
-	// TODO: Check for nils
-	headRepoOwner := *ghPullRequest.Head.Repo.Owner.Login
-	headRepoName := *ghPullRequest.Head.Repo.Name
-	headRef := *ghPullRequest.Head.Ref
+	baseBranch := ghPullRequest.Base
+	if baseBranch == nil {
+		log.Fatalln("base branch is nil")
 
-	ioReader, _, err := client.Repositories.DownloadContents(ctx, headRepoOwner, headRepoName, ReviewpadFile, &github.RepositoryContentGetOptions{
-		Ref: headRef,
+		if baseBranch.Ref == nil {
+			log.Fatalln("base branch ref is nil")
+		}
+
+		baseRepo := baseBranch.Repo
+		if baseRepo == nil {
+			log.Fatalln("base branch repository is nil")
+		}
+
+		if baseRepo.Name == nil {
+			log.Fatalln("base branch repository name is nil")
+		}
+
+		if baseRepo.Owner == nil || baseRepo.Owner.Login == nil {
+			log.Fatalln("base branch repository owner (or login) is nil")
+		}
+	}
+
+	baseRepoOwner := *ghPullRequest.Base.Repo.Owner.Login
+	baseRepoName := *ghPullRequest.Base.Repo.Name
+	baseRef := *ghPullRequest.Base.Ref
+
+	ioReader, _, err := client.Repositories.DownloadContents(ctx, baseRepoOwner, baseRepoName, ReviewpadFile, &github.RepositoryContentGetOptions{
+		Ref: baseRef,
 	})
 	if err != nil {
-		log.Print(err.Error())
-		return
+		log.Fatalln(err.Error())
 	}
 
 	buf := new(bytes.Buffer)
 	_, err = buf.ReadFrom(ioReader)
 	if err != nil {
-		log.Fatalln(err)
+		log.Fatalln(err.Error())
 	}
 
 	file, err := reviewpad.Load(buf)
 	if err != nil {
-		log.Print(err.Error())
-		return
+		log.Fatalln(err.Error())
 	}
 
-	collectorClient := collector.NewCollector(MixpanelToken, headRepoOwner)
-
-	defaultOptions := grpc.WithDefaultCallOptions(grpc.MaxCallRecvMsgSize(419430400))
-	semanticConnection, err := grpc.Dial(env.SemanticEndpoint, grpc.WithInsecure(), defaultOptions)
-	if err != nil {
-		log.Printf("failed to dial semantic service: %v", err)
-		return
-	}
-	defer semanticConnection.Close()
-	semanticClient := atlas.NewSemanticClient(semanticConnection)
+	collectorClient := collector.NewCollector(MixpanelToken, baseRepoOwner)
 
 	switch file.Edition {
 	case engine.PROFESSIONAL_EDITION:
+		defaultOptions := grpc.WithDefaultCallOptions(grpc.MaxCallRecvMsgSize(419430400))
+		semanticConnection, semanticConnectionError := grpc.Dial(env.SemanticEndpoint, grpc.WithInsecure(), defaultOptions)
+		if semanticConnectionError != nil {
+			log.Fatalf("failed to dial semantic service: %v", err)
+		}
+		defer semanticConnection.Close()
+		semanticClient := atlas.NewSemanticClient(semanticConnection)
+
 		err = reviewpad_premium.Run(ctx, client, clientGQL, collectorClient, semanticClient, ghPullRequest, file, false)
 	default:
 		_, err = reviewpad.Run(ctx, client, clientGQL, collectorClient, ghPullRequest, file, false)
