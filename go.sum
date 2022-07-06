@@ -35,8 +35,8 @@ github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03
 github.com/BurntSushi/xgb v0.0.0-20160522181843-27f122750802/go.mod h1:IVnqGOEym/WlBOVXweHU+Q+/VP0lqqI8lqeDx9IjBqo=
 github.com/OneOfOne/xxhash v1.2.2/go.mod h1:HSdplMjZKSmBqAxg5vPj2TmRDmfkzw+cTzAElWljhcU=
 github.com/antihax/optional v1.0.0/go.mod h1:uupD/76wgC+ih3iEmQUL+0Ugr19nfwCT1kdvxnR2qWY=
-github.com/bmatcuk/doublestar/v4 v4.0.2 h1:X0krlUVAVmtr2cRoTqR8aDMrDqnB36ht8wpWTiQ3jsA=
-github.com/bmatcuk/doublestar/v4 v4.0.2/go.mod h1:xBQ8jztBU6kakFMg+8WGxn0c6z1fTSPVIjEY1Wr7jzc=
+github.com/bmatcuk/doublestar/v4 v4.0.3 h1:4OP3JgX9zL4yBFezFv8AuFpxWkgp8pNV9A1FY4bVVN4=
+github.com/bmatcuk/doublestar/v4 v4.0.3/go.mod h1:xBQ8jztBU6kakFMg+8WGxn0c6z1fTSPVIjEY1Wr7jzc=
 github.com/census-instrumentation/opencensus-proto v0.2.1/go.mod h1:f6KPmirojxKA12rnyqOA5BBL4O983OfeGPqjHWSTneU=
 github.com/cespare/xxhash v1.1.0/go.mod h1:XrSqR1VqqWfGrhpAt58auRo0WTKS1nRRg3ghfAqPWnc=
 github.com/chzyer/logex v1.1.10/go.mod h1:+Ywpsq7O8HXn0nuIou7OrIPyXbp3wmkHB+jjWRnGsAI=
@@ -155,10 +155,10 @@ github.com/pkg/errors v0.8.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINE
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/prometheus/client_model v0.0.0-20190812154241-14fe0d1b01d4/go.mod h1:xMI15A0UPsDsEKsMN9yxemIoYk6Tm2C1GtYGdfGttqA=
-github.com/reviewpad/reviewpad-premium/v2 v2.1.1-0.20220704155546-bcac9f08a7a6 h1:xpv+7qd4n9+ZVK5jEUG4+IJNmiWa6IxusL95kx1E7so=
-github.com/reviewpad/reviewpad-premium/v2 v2.1.1-0.20220704155546-bcac9f08a7a6/go.mod h1:p345DlQr9NbbrOyu3yw4ujVrsntVmWxK4JPCx6fgjW4=
-github.com/reviewpad/reviewpad/v2 v2.1.1-0.20220704141608-2ac4461ff9e8 h1:qJOnZvhQhjWVFPb3vUwRHB21m52yc74fms+QzqZa9es=
-github.com/reviewpad/reviewpad/v2 v2.1.1-0.20220704141608-2ac4461ff9e8/go.mod h1:FMsbvQGHmSAUiyGISeMzmz+auvwjMVv0NK6duagBTjQ=
+github.com/reviewpad/reviewpad-premium/v2 v2.1.1-0.20220706122033-6e2845b5014a h1:NChAHvCAABBLiIjnzaNKFN/7uFC7u4fENCXtU9jKe9M=
+github.com/reviewpad/reviewpad-premium/v2 v2.1.1-0.20220706122033-6e2845b5014a/go.mod h1:rb2m+mF/K9pPBGayKM68T2RI4iyMaRDpj6Vac3vKuz8=
+github.com/reviewpad/reviewpad/v2 v2.1.1-0.20220706121931-b8206be42050 h1:pI85woH58Lcs1FM6XCwz39K0cKXOB67BlxDHJcZR53M=
+github.com/reviewpad/reviewpad/v2 v2.1.1-0.20220706121931-b8206be42050/go.mod h1:7uoy+Pfom+1wc7DYKO2GyEZt2JeF90JltVXJC9zoRQE=
 github.com/rogpeppe/fastuuid v1.2.0/go.mod h1:jVj6XXZzXRy/MSR5jhDC/2q6DgLz+nrA6LYCDYWNEvQ=
 github.com/rogpeppe/go-internal v1.3.0/go.mod h1:M8bDsm7K2OlrFYOpmOWEs/qY81heoFRclV5y23lUDJ4=
 github.com/shurcooL/githubv4 v0.0.0-20220520033151-0b4e3294ff00 h1:fiFvD4lT0aWjuuAb64LlZ/67v87m+Kc9Qsu5cMFNK0w=

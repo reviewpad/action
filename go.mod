@@ -5,15 +5,15 @@ go 1.18
 require (
 	github.com/explore-dev/atlas-common/go v0.0.0-20220509090605-a2bc1701df68
 	github.com/google/go-github/v42 v42.0.0
-	github.com/reviewpad/reviewpad-premium/v2 v2.1.1-0.20220704155546-bcac9f08a7a6
-	github.com/reviewpad/reviewpad/v2 v2.1.1-0.20220704141608-2ac4461ff9e8
+	github.com/reviewpad/reviewpad-premium/v2 v2.1.1-0.20220706122033-6e2845b5014a
+	github.com/reviewpad/reviewpad/v2 v2.1.1-0.20220706121931-b8206be42050
 	github.com/shurcooL/githubv4 v0.0.0-20220520033151-0b4e3294ff00
 	golang.org/x/oauth2 v0.0.0-20220608161450-d0670ef3b1eb
 	google.golang.org/grpc v1.40.0
 )
 
 require (
-	github.com/bmatcuk/doublestar/v4 v4.0.2 // indirect
+	github.com/bmatcuk/doublestar/v4 v4.0.3 // indirect
 	github.com/dukex/mixpanel v0.0.0-20220410140740-e82251311162 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/google/go-querystring v1.1.0 // indirect
