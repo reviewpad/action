@@ -158,15 +158,7 @@ func main() {
 
 	switch file.Edition {
 	case engine.PROFESSIONAL_EDITION:
-		defaultOptions := grpc.WithDefaultCallOptions(grpc.MaxCallRecvMsgSize(419430400))
-		semanticConnection, semanticConnectionError := grpc.Dial(env.SemanticEndpoint, grpc.WithInsecure(), defaultOptions)
-		if semanticConnectionError != nil {
-			log.Fatalf("failed to dial semantic service: %v", err)
-		}
-		defer semanticConnection.Close()
-		semanticClient := atlas.NewSemanticClient(semanticConnection)
-
-		err = reviewpad_premium.Run(ctx, client, clientGQL, collectorClient, semanticClient, ghPullRequest, file, false)
+		err = runReviewpadPremium(ctx, env, client, clientGQL, collectorClient, ghPullRequest, file, false)
 	default:
 		_, err = reviewpad.Run(ctx, client, clientGQL, collectorClient, ghPullRequest, file, false)
 	}
@@ -178,4 +170,26 @@ func main() {
 		}
 		log.Fatal(err.Error())
 	}
+}
+
+// reviewpad-an: critical
+func runReviewpadPremium(
+	ctx context.Context,
+	env *Env,
+	client *github.Client,
+	clientGQL *githubv4.Client,
+	collector collector.Collector,
+	ghPullRequest *github.PullRequest,
+	reviewpadFile *engine.ReviewpadFile,
+	dryRun bool,
+) error {
+	defaultOptions := grpc.WithDefaultCallOptions(grpc.MaxCallRecvMsgSize(419430400))
+	semanticConnection, err := grpc.Dial(env.SemanticEndpoint, grpc.WithInsecure(), defaultOptions)
+	if err != nil {
+		log.Fatalf("failed to dial semantic service: %v", err)
+	}
+	defer semanticConnection.Close()
+	semanticClient := atlas.NewSemanticClient(semanticConnection)
+
+	return reviewpad_premium.Run(ctx, client, clientGQL, collector, semanticClient, ghPullRequest, reviewpadFile, dryRun)
 }
