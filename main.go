@@ -121,8 +121,12 @@ func main() {
 			log.Fatalln("base branch repository name is nil")
 		}
 
-		if baseRepo.Owner == nil || baseRepo.Owner.Login == nil {
-			log.Fatalln("base branch repository owner (or login) is nil")
+		if baseRepo.Owner == nil {
+			log.Fatalln("base branch repository owner is nil")
+		}
+
+		if baseRepo.Owner.Login == nil {
+			log.Fatalln("base branch repository owner login is nil")
 		}
 	}
 
@@ -130,6 +134,8 @@ func main() {
 	baseRepoName := *ghPullRequest.Base.Repo.Name
 	baseRef := *ghPullRequest.Base.Ref
 
+	// We fetch the ReviewpadFile from the base branch to prevent misuse
+	// of the action by hijacking it through a pull request from a fork.
 	ioReader, _, err := client.Repositories.DownloadContents(ctx, baseRepoOwner, baseRepoName, ReviewpadFile, &github.RepositoryContentGetOptions{
 		Ref: baseRef,
 	})
