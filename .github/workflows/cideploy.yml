@@ -2,7 +2,7 @@ name: CIDeploy
 
 on:
   push:
-    branches: [ main, debug ]
+    branches: [ main ]
 
 jobs:
   build:
