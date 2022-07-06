@@ -1,4 +1,4 @@
-# Reviewpad GitHub Action
+# Reviewpad GitHub Action ![x-ray-badge](https://img.shields.io/badge/Time%20to%20Merge-Strong%20team-ee9b00?link=https://xray.reviewpad.com/analysis?repository=https%3A%2F%2Fgithub.com%2Freviewpad%2Faction&style=plastic.svg)
 
 **Latest Stable Version**: v2.x (Lisbon Edition)
 
