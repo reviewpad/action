@@ -26,7 +26,10 @@ import (
 
 var MixpanelToken string
 
-const ReviewpadFile string = "reviewpad.yml"
+const (
+	ReviewpadFile string = "reviewpad.yml"
+	DryRunFlag    bool   = false
+)
 
 type Env struct {
 	RepoOwner        string
@@ -158,9 +161,9 @@ func main() {
 
 	switch file.Edition {
 	case engine.PROFESSIONAL_EDITION:
-		err = runReviewpadPremium(ctx, env, client, clientGQL, collectorClient, ghPullRequest, file, false)
+		err = runReviewpadPremium(ctx, env, client, clientGQL, collectorClient, ghPullRequest, file, DryRunFlag)
 	default:
-		_, err = reviewpad.Run(ctx, client, clientGQL, collectorClient, ghPullRequest, file, false)
+		_, err = reviewpad.Run(ctx, client, clientGQL, collectorClient, ghPullRequest, file, DryRunFlag)
 	}
 
 	if err != nil {
