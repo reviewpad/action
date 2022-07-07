@@ -95,4 +95,4 @@ If you want to use more advanced features such as the auto-merge feature, we rec
     token: ${{ secrets.GH_TOKEN }}
 ```
 
-[Please follow this link to know more](https://docs.reviewpad.com/docs/install-github-action-with-github-token).
+[Please follow this link to know more](https://docs.reviewpad.com/docs/github-action-with-github-token).
