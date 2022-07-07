@@ -8,6 +8,14 @@ inputs:
     description: "GitHub action event"
     default: ${{ toJSON(github) }}
     required: false
+  token:
+    description: >
+      Personal access token (PAT) used to fetch information from the repository. 
+      The PAT is configured with the local git config, which enables your scripts 
+      to run authenticated git commands. The post-job step removes the PAT.
+      We recommend using a service account with the least permissions necessary.
+    default: ${{ github.token }}
+    required: false
 runs:
   using: "docker"
   image: "docker://reviewpad/action:0fc4bbb80603420e2ac4e22f4d8621ed5cd25c39"

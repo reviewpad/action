@@ -162,7 +162,7 @@ func runReviewpadPremium(
 	return reviewpad_premium.Run(ctx, client, clientGQL, collector, semanticClient, ghPullRequest, reviewpadFile, dryRun)
 }
 
-func RunAction(semanticEndpoint *string, rawEvent *string) {
+func RunAction(semanticEndpoint *string, rawEvent *string, token string) {
 	event, err := handler.ParseEvent(*rawEvent)
 	if err != nil {
 		log.Print(err)
@@ -170,6 +170,8 @@ func RunAction(semanticEndpoint *string, rawEvent *string) {
 	}
 
 	prs := handler.ProcessEvent(event)
+
+	event.Token = &token
 
 	for _, pr := range prs {
 		runReviewpad(pr, event, semanticEndpoint)

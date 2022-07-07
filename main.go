@@ -24,5 +24,11 @@ func main() {
 		return
 	}
 
-	agent.RunAction(&semanticEndpoint, &rawEvent)
+	token, ok := os.LookupEnv("INPUT_TOKEN")
+	if !ok {
+		log.Print("missing variable INPUT_TOKEN")
+		return
+	}
+  
+	agent.RunAction(&semanticEndpoint, &rawEvent, token)
 }
