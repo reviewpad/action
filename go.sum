@@ -155,8 +155,8 @@ github.com/pkg/errors v0.8.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINE
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/prometheus/client_model v0.0.0-20190812154241-14fe0d1b01d4/go.mod h1:xMI15A0UPsDsEKsMN9yxemIoYk6Tm2C1GtYGdfGttqA=
-github.com/reviewpad/reviewpad-premium/v2 v2.3.0 h1:W0QGL1HOkFJsoT9t8zqIXrHayYkKCf0dSKhAN758dyo=
-github.com/reviewpad/reviewpad-premium/v2 v2.3.0/go.mod h1:KuXF4Rs6i4pUe8zeOFx7QWiTtWcYLSPa8RMlc5ezcDI=
+github.com/reviewpad/reviewpad-premium/v2 v2.3.1 h1:C8WkJZygLTCuVWeeeZEiJwK80104FgTQMwak3BK2OIg=
+github.com/reviewpad/reviewpad-premium/v2 v2.3.1/go.mod h1:ceaLZDl8UTT3LwwCA9LTk4HQg3Zi7oBGoBF6IICJGpI=
 github.com/reviewpad/reviewpad/v2 v2.3.0 h1:vCk1XzHC6B8FETo+T9+s/dIPUKio7vB7x7KQLx6RGkA=
 github.com/reviewpad/reviewpad/v2 v2.3.0/go.mod h1:7uoy+Pfom+1wc7DYKO2GyEZt2JeF90JltVXJC9zoRQE=
 github.com/rogpeppe/fastuuid v1.2.0/go.mod h1:jVj6XXZzXRy/MSR5jhDC/2q6DgLz+nrA6LYCDYWNEvQ=
