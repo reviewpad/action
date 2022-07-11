@@ -126,9 +126,9 @@ func runReviewpad(prNum int, e *handler.ActionEvent, semanticEndpoint *string) {
 
 	switch file.Edition {
 	case engine.PROFESSIONAL_EDITION:
-		err = runReviewpadPremium(ctx, env, client, clientGQL, collectorClient, pullRequest, file, false)
+		err = runReviewpadPremium(ctx, env, client, clientGQL, collectorClient, pullRequest, eventPayload, file, false)
 	default:
-		_, err = reviewpad.Run(ctx, client, clientGQL, collectorClient, pullRequest, file, false)
+		_, err = reviewpad.Run(ctx, client, clientGQL, collectorClient, pullRequest, eventPayload, file, false)
 	}
 
 	if err != nil {
@@ -148,6 +148,7 @@ func runReviewpadPremium(
 	clientGQL *githubv4.Client,
 	collector collector.Collector,
 	ghPullRequest *github.PullRequest,
+	eventPayload interface{},
 	reviewpadFile *engine.ReviewpadFile,
 	dryRun bool,
 ) error {
@@ -159,7 +160,7 @@ func runReviewpadPremium(
 	defer semanticConnection.Close()
 	semanticClient := atlas.NewSemanticClient(semanticConnection)
 
-	return reviewpad_premium.Run(ctx, client, clientGQL, collector, semanticClient, ghPullRequest, reviewpadFile, dryRun)
+	return reviewpad_premium.Run(ctx, client, clientGQL, collector, semanticClient, ghPullRequest, eventPayload, reviewpadFile, dryRun)
 }
 
 func RunAction(semanticEndpoint *string, rawEvent *string, token string) {

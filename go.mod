@@ -5,7 +5,7 @@ go 1.18
 require (
 	github.com/explore-dev/atlas-common/go v0.0.0-20220509090605-a2bc1701df68
 	github.com/google/go-github/v42 v42.0.0
-	github.com/reviewpad/host-event-handler v0.0.0-20220707080715-fb2cd1406ad5
+	github.com/reviewpad/host-event-handler v0.0.0-20220708091812-41621168cd55
 	github.com/reviewpad/reviewpad-premium/v2 v2.4.1-0.20220712201033-0e1b8bdfbedd
 	github.com/reviewpad/reviewpad/v2 v2.4.1-0.20220712200838-1eef4240c86d
 	github.com/shurcooL/githubv4 v0.0.0-20220520033151-0b4e3294ff00

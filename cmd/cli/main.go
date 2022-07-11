@@ -9,7 +9,6 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
-	"strings"
 
 	"github.com/reviewpad/action/v2/agent"
 )
@@ -47,7 +46,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	rawEvent := strings.Replace(string(content), "***", *token, 1)
+	rawEvent := string(content)
 
-	agent.RunAction(semanticEndpoint, &rawEvent)
+	agent.RunAction(semanticEndpoint, &rawEvent, *token)
 }

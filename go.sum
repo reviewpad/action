@@ -161,8 +161,8 @@ github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZN
 github.com/prometheus/client_model v0.0.0-20190812154241-14fe0d1b01d4/go.mod h1:xMI15A0UPsDsEKsMN9yxemIoYk6Tm2C1GtYGdfGttqA=
 github.com/reviewpad/go-conventionalcommits v0.9.1-0.20220711105509-b24f32c5fc80 h1:GX4resgEO8nQsbxSn9Q7oMRsTjolpAzNIJ619Ogk35M=
 github.com/reviewpad/go-conventionalcommits v0.9.1-0.20220711105509-b24f32c5fc80/go.mod h1:KicEsBgh+4HbqXliJ4OUWosSlyGLYCee4vtqkry68x8=
-github.com/reviewpad/host-event-handler v0.0.0-20220707080715-fb2cd1406ad5 h1:6uHSuiKHM3ZW+VhLiVbTlmBBOZOTTQIA4aNPWkQ7PFo=
-github.com/reviewpad/host-event-handler v0.0.0-20220707080715-fb2cd1406ad5/go.mod h1:QTpoGZHB9zghjrT8+S5/xerNPqVK2rVfgS87Rp+5Idw=
+github.com/reviewpad/host-event-handler v0.0.0-20220708091812-41621168cd55 h1:heeu6+kwbA8rMEaFj6u8nL2kLS2fWsFhdfAU/+duMMw=
+github.com/reviewpad/host-event-handler v0.0.0-20220708091812-41621168cd55/go.mod h1:QTpoGZHB9zghjrT8+S5/xerNPqVK2rVfgS87Rp+5Idw=
 github.com/reviewpad/reviewpad-premium/v2 v2.4.1-0.20220712201033-0e1b8bdfbedd h1:u2nAeKNRkYELl5g+3LpNwRO9YczqDdokoFMROBq10/s=
 github.com/reviewpad/reviewpad-premium/v2 v2.4.1-0.20220712201033-0e1b8bdfbedd/go.mod h1:soQasbQDOHd9/4YaFsUrt1TDJv6r3Q4cXXHZMZAntnI=
 github.com/reviewpad/reviewpad/v2 v2.4.1-0.20220712200838-1eef4240c86d h1:XXhrWAKtM+MA9SoqwoAXpNDHP3IXDRSJW3bgLilyMrI=
