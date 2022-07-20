@@ -10,7 +10,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/reviewpad/action/v2/agent"
+	"github.com/reviewpad/action/v3/agent"
 )
 
 var (

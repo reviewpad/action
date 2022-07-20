@@ -8,7 +8,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/reviewpad/action/v2/agent"
+	"github.com/reviewpad/action/v3/agent"
 )
 
 func main() {
@@ -29,6 +29,6 @@ func main() {
 		log.Print("missing variable INPUT_TOKEN")
 		return
 	}
-  
+
 	agent.RunAction(&semanticEndpoint, &rawEvent, token)
 }
