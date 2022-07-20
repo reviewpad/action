@@ -48,5 +48,5 @@ func main() {
 
 	rawEvent := string(content)
 
-	agent.RunAction(semanticEndpoint, &rawEvent, *token)
+	agent.RunAction(*semanticEndpoint, rawEvent, *token)
 }

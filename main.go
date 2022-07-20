@@ -30,5 +30,5 @@ func main() {
 		return
 	}
 
-	agent.RunAction(&semanticEndpoint, &rawEvent, token)
+	agent.RunAction(semanticEndpoint, rawEvent, token)
 }

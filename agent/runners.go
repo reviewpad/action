@@ -35,7 +35,8 @@ type Env struct {
 	EventPayload     interface{}
 }
 
-func runReviewpad(prNum int, e *handler.ActionEvent, semanticEndpoint *string) {
+// reviewpad-an: critical
+func runReviewpad(prNum int, e *handler.ActionEvent, semanticEndpoint string) {
 	repo := *e.Repository
 	splittedRepo := strings.Split(repo, "/")
 	repoOwner := splittedRepo[0]
@@ -52,7 +53,7 @@ func runReviewpad(prNum int, e *handler.ActionEvent, semanticEndpoint *string) {
 		RepoName:         repoName,
 		Token:            *e.Token,
 		PRNumber:         prNum,
-		SemanticEndpoint: *semanticEndpoint,
+		SemanticEndpoint: semanticEndpoint,
 		EventPayload:     eventPayload,
 	}
 
@@ -163,8 +164,9 @@ func runReviewpadPremium(
 	return reviewpad_premium.Run(ctx, client, clientGQL, collector, semanticClient, ghPullRequest, eventPayload, reviewpadFile, dryRun)
 }
 
-func RunAction(semanticEndpoint *string, rawEvent *string, token string) {
-	event, err := handler.ParseEvent(*rawEvent)
+// reviewpad-an: critical
+func RunAction(semanticEndpoint string, rawEvent string, token string) {
+	event, err := handler.ParseEvent(rawEvent)
 	if err != nil {
 		log.Print(err)
 		return
