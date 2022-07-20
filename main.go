@@ -14,21 +14,23 @@ import (
 func main() {
 	semanticEndpoint, ok := os.LookupEnv("SEMANTIC_SERVICE_ENDPOINT")
 	if !ok {
-		log.Print("missing semantic service endpoint")
-		return
+		log.Fatal("missing semantic service endpoint")
 	}
 
 	rawEvent, ok := os.LookupEnv("INPUT_EVENT")
 	if !ok {
-		log.Print("missing variable INPUT_EVENT")
-		return
+		log.Fatal("missing variable INPUT_EVENT")
 	}
 
 	token, ok := os.LookupEnv("INPUT_TOKEN")
 	if !ok {
-		log.Print("missing variable INPUT_TOKEN")
-		return
+		log.Fatal("missing variable INPUT_TOKEN")
 	}
 
-	agent.RunAction(semanticEndpoint, rawEvent, token)
+	file, ok := os.LookupEnv("INPUT_FILE")
+	if !ok {
+		log.Fatal("missing variable INPUT_FILE")
+	}
+
+	agent.RunAction(semanticEndpoint, rawEvent, token, file)
 }

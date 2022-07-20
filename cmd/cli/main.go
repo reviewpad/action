@@ -17,6 +17,7 @@ var (
 	token            = flag.String("github-token", "", "GitHub token")
 	semanticEndpoint = flag.String("semantic-endpoint", "0.0.0.0:3008", "Semantic client endpoint")
 	eventFilePath    = flag.String("event-payload", "", "File path to github action event")
+	reviewpadFile    = flag.String("reviewpad", "", "File path to reviewpad.yml")
 )
 
 func usage() {
@@ -41,6 +42,11 @@ func main() {
 		usage()
 	}
 
+	if *reviewpadFile == "" {
+		log.Printf("missing argument file")
+		usage()
+	}
+
 	content, err := ioutil.ReadFile(*eventFilePath)
 	if err != nil {
 		log.Fatal(err)
@@ -48,5 +54,5 @@ func main() {
 
 	rawEvent := string(content)
 
-	agent.RunAction(*semanticEndpoint, rawEvent, *token)
+	agent.RunAction(*semanticEndpoint, rawEvent, *token, *reviewpadFile)
 }

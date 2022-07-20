@@ -24,8 +24,6 @@ import (
 
 var MixpanelToken string
 
-const ReviewpadFile string = "reviewpad.yml"
-
 type Env struct {
 	RepoOwner        string
 	RepoName         string
@@ -36,7 +34,7 @@ type Env struct {
 }
 
 // reviewpad-an: critical
-func runReviewpad(prNum int, e *handler.ActionEvent, semanticEndpoint string) {
+func runReviewpad(prNum int, e *handler.ActionEvent, semanticEndpoint string, filePath string) {
 	repo := *e.Repository
 	splittedRepo := strings.Split(repo, "/")
 	repoOwner := splittedRepo[0]
@@ -105,9 +103,9 @@ func runReviewpad(prNum int, e *handler.ActionEvent, semanticEndpoint string) {
 	baseRepoName := *pullRequest.Base.Repo.Name
 	baseRef := *pullRequest.Base.Ref
 
-	// We fetch the ReviewpadFile from the base branch to prevent misuse
+	// We fetch the configuration file from the base branch to prevent misuse
 	// of the action by hijacking it through a pull request from a fork.
-	ioReader, _, err := client.Repositories.DownloadContents(ctx, baseRepoOwner, baseRepoName, ReviewpadFile, &github.RepositoryContentGetOptions{
+	ioReader, _, err := client.Repositories.DownloadContents(ctx, baseRepoOwner, baseRepoName, filePath, &github.RepositoryContentGetOptions{
 		Ref: baseRef,
 	})
 	if err != nil {
@@ -165,7 +163,7 @@ func runReviewpadPremium(
 }
 
 // reviewpad-an: critical
-func RunAction(semanticEndpoint string, rawEvent string, token string) {
+func RunAction(semanticEndpoint, rawEvent, token, file string) {
 	event, err := handler.ParseEvent(rawEvent)
 	if err != nil {
 		log.Print(err)
@@ -177,6 +175,6 @@ func RunAction(semanticEndpoint string, rawEvent string, token string) {
 	event.Token = &token
 
 	for _, pr := range prs {
-		runReviewpad(pr, event, semanticEndpoint)
+		runReviewpad(pr, event, semanticEndpoint, file)
 	}
 }

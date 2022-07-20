@@ -8,6 +8,10 @@ inputs:
     description: "GitHub action event"
     default: ${{ toJSON(github) }}
     required: false
+  file:
+    description: "Reviewpad configuration file"
+    default: "reviewpad.yml"
+    required: false
   token:
     description: >
       Personal access token (PAT) used to fetch information from the repository. 
