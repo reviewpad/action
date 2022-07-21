@@ -5,6 +5,7 @@
 *.so
 *.dylib
 action
+action-cli
 
 # Test binary, built with `go test -c`
 *.test
@@ -15,3 +16,9 @@ action
 # Dependency directories (remove the comment below to include it)
 # vendor/
 .task/*
+
+# IDEA
+.vscode
+
+# OS
+.DS_store

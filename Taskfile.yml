@@ -15,6 +15,16 @@ tasks:
     sources:
       - ./*.go
 
+  build-cli:
+    summary: |
+      Builds commands.
+
+      Run with --watch or -w to watch for changes on Go files.
+    cmds:
+      - go build  -o action-cli ./cmd/cli/main.go
+    sources:
+      - ./cmd/**/*.go
+
   test:
     summary: |
       Runs unit tests with coverage

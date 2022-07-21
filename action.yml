@@ -4,13 +4,13 @@ branding:
   icon: "send"
   color: "blue"
 inputs:
-  repository:
-    description: "Repository name with owner."
-    default: ${{ github.repository }}
+  event:
+    description: "GitHub action event"
+    default: ${{ toJSON(github) }}
     required: false
-  prnumber:
-    description: "Pull request number."
-    default: ${{ github.event.pull_request.number }}
+  file:
+    description: "Reviewpad configuration file"
+    default: "reviewpad.yml"
     required: false
   token:
     description: >
