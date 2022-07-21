@@ -1,27 +1,25 @@
 # Reviewpad GitHub Action [![x-ray-badge](https://img.shields.io/badge/Time%20to%20Merge-Strong%20team-ee9b00?link=https://xray.reviewpad.com/analysis?repository=https%3A%2F%2Fgithub.com%2Freviewpad%2Faction&style=plastic.svg)](https://xray.reviewpad.com/analysis?repository=https%3A%2F%2Fgithub.com%2Freviewpad%2Faction) [![CIDeploy](https://github.com/reviewpad/action/actions/workflows/cideploy.yml/badge.svg)](https://github.com/reviewpad/action/actions/workflows/cideploy.yml)
 
-**Latest Stable Version**: v2.x (Lisbon Edition)
+**Latest Stable Version**: v3.x (Faro Edition)
 
 For **questions**, check out the [discussions](https://github.com/reviewpad/reviewpad/discussions).
 
 For **documentation**, check out this document and the [official documentation](https://docs.reviewpad.com).
 
-**If you think Reviewpad is or could be useful for you, join our community on [Discord](https://reviewpad.com/discord).**
+**Join our community on [discord](https://reviewpad.com/discord)!**
 
 ____
 
 This action runs the docker image [reviewpad/action](https://hub.docker.com/repository/docker/reviewpad/action).
 
-The docker image is automatically pushed to Docker Hub on every commit to the main branch.
-
-It reads and automates the pull request workflows specified in the `reviewpad.yml` file at the root of your GitHub repository.
+It reads and automates the pull request workflows specified in the `reviewpad.yml` configuration file.
 
 These workflows can be used to automatically label, assign reviewers, comment, merge and close pull requests.
 
 For example, the following `reviewpad.yml` file:
 
 ```yaml
-api-version: reviewpad.com/v2.x
+api-version: reviewpad.com/v3.x
 
 rules:
   - name: is-small
@@ -48,7 +46,7 @@ workflows:
           - $addLabel("small")
       - rule: is-medium
         extra-actions:
-          - $addLabel("medium")
+          - $addLabel("medizum")
       - rule: is-large
         extra-actions:
           - $addLabel("large")
@@ -60,8 +58,8 @@ For more information on the release procedure, check the [RELEASE.md](./RELEASE.
 
 ## Inputs
 
-- **repository**: Uses default `${{ github.repository }}`
-- **prnumber**: Uses default `${{ github.event.pull_request.number }}`
+- **event**: The GitHub event context that trigger the action. Uses default `${{ toJSON(github) }}`
+- **file**: The location of the Reviewpad configuration file. Uses default `reviewpad.yml`
 - **token**: Uses default `${{ github.token }}`
 
 ## Outputs
@@ -70,13 +68,13 @@ None.
 
 ## Usage examples
 
-**This action should only be used on `pull_request` related events.**
+**This action can be used with any [event](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows) that triggers a workflow.**
 
 Add the following step to a GitHub Action job:
 
 ```yaml
 - name: Run reviewpad action
-  uses: reviewpad/action@v2.x
+  uses: reviewpad/action@v3.x
 ```
 
 
@@ -90,7 +88,7 @@ If you want to use more advanced features such as the auto-merge feature, we rec
 
 ```yaml
 - name: Run reviewpad action
-  uses: reviewpad/action@v2.x
+  uses: reviewpad/action@v3.x
   with:
     token: ${{ secrets.GH_TOKEN }}
 ```
